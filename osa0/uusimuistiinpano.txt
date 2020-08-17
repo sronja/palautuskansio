@@ -1,0 +1,19 @@
+title Muistiinpanon luominen
+
+note over selain: käyttäjä kirjoittaa lomakkeeseen ja painaa tallenna-nappia
+selain->palvelin: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note
+palvelin-->selain: HTTP-statuskoodi 302, uudelleenohjauspyyntö
+note over selain: selain lataa sivun uudelleen
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/notes
+palvelin-->selain: HTML-koodi
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+palvelin-->selain: main.css
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.js
+palvelin-->selain: main.js
+
+note over selain: selain alkaa suorittaa js-koodia, joka pyytää JSON-datan (raakadatan) palvelimelta
+
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+palvelin-->selain: data
+
+note over selain: selain suorittaa tapahtumakäsittelijän, joka renderöi muistiinpanot näytölle
